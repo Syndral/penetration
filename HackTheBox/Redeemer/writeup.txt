@@ -1,0 +1,12 @@
+1. $ nmap -sV 10.129.33.22       ; nmap端口/版本探测
+  ==> 6379/redis服务
+
+2. $ redis-cli -h 10.129.33.22   ; redis客户端登录
+
+3. $ redis-cli -h 10.129.33.22
+    10.129.33.22:6379> info    ;info查看信息
+    # Server
+    redis_version:5.0.7
+
+4.  10.129.33.22:6379> keys *    ;查看key
+    10.129.33.22:6379> get key

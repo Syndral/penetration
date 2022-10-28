@@ -1,0 +1,10 @@
+$ sudo nmap -sC -sV 10.129.33.22 -p 6379
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-10-20 23:58 CST
+Nmap scan report for 10.129.33.22
+Host is up (0.27s latency).
+
+PORT     STATE SERVICE VERSION
+6379/tcp open  redis   Redis key-value store 5.0.7
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 21.13 seconds

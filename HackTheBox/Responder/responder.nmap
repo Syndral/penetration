@@ -1,0 +1,15 @@
+# Nmap 7.92 scan initiated Fri Oct 21 09:10:43 2022 as: nmap -sC -sS -sV -p- -oN responder.nmap 10.129.90.122
+Nmap scan report for 10.129.90.122
+Host is up (0.26s latency).
+Not shown: 65533 filtered tcp ports (no-response)
+PORT     STATE SERVICE VERSION
+80/tcp   open  http    Apache httpd 2.4.52 ((Win64) OpenSSL/1.1.1m PHP/8.1.1)
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+|_http-server-header: Apache/2.4.52 (Win64) OpenSSL/1.1.1m PHP/8.1.1
+5985/tcp open  http    Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-title: Not Found
+|_http-server-header: Microsoft-HTTPAPI/2.0
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Oct 21 09:20:52 2022 -- 1 IP address (1 host up) scanned in 609.18 seconds

